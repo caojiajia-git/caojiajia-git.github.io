@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="chinese (simplified)">
+<head>
+        <meta charset="utf-8" />
+        <title>我的技术博客</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">佳哥博客 </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="/category/python.html">Python</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/Python1.html" rel="bookmark"
+           title="Permalink to 我的技术博客">我的技术博客</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-05-13T11:11:00+02:00">
+                Published: 周二 13 五月 2014
+        </abbr>
+		<br />
+        <abbr class="modified" title="2014-05-13T11:11:00+02:00">
+                Updated: 周二 13 五月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/cao-jia-jia.html">曹佳佳</a>
+        </address>
+<p>In <a href="/category/python.html">Python</a>.</p>
+<p>tags: <a href="/tag/python.html">Python</a> </p>
+</footer><!-- /.post-info -->      <div class="highlight"><pre><span></span>&lt;template&gt;
+    &lt;div&gt;
+
+        &lt;Header&gt;&lt;/Header&gt;
+
+
+
+        &lt;section class=&quot;gallery-content&quot;&gt;
+            &lt;div class=&quot;container&quot;&gt;
+                &lt;div class=&quot;row port&quot;&gt;
+                    &lt;div class=&quot;col-md-8 col-md-offset-2 text-center button-group&quot; id=&quot;filters&quot;&gt;
+
+                        &lt;button class=&quot;gallery-btn btn-primary btn is-checked&quot; @click=&quot;call_num&quot;&gt;叫号&lt;/button&gt;
+                        &lt;button class=&quot;gallery-btn btn-primary btn&quot; @click=&quot;down(one_user.id)&quot;&gt;过号&lt;/button&gt;
+                        &lt;button class=&quot;gallery-btn btn-primary btn&quot; @click=&quot;fulfill(one_user.id)&quot; v-show=&quot;is_show&quot;&gt;完成&lt;/button&gt;
+
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+
+
+
+
+
+    &lt;section id=&quot;job&quot;&gt;
+            &lt;div class= &quot;job-wrapper&quot;&gt;
+                &lt;div class=&quot;container&quot;&gt;
+                    &lt;div class=&quot;row&quot;&gt;
+                        &lt;div class=&quot;col-lg-6 col-md-6 col-sm-6&quot;&gt;
+
+                            &lt;div v-show=&quot;is_show&quot;&gt;
+
+                                &lt;p class=&quot;window&quot;&gt;
+                                    aaaaaa
+                                    &lt;span&gt;{{ one_user.book_rank }}&lt;/span&gt;
+                                    &lt;!-- &lt;span&gt;{{ one_user.bady_id.name }}&lt;/span&gt;
+                                    &lt;span&gt;{{ one_user.bady_id.sex }}&lt;/span&gt; --&gt;
+
+                                &lt;/p&gt;
+
+                            &lt;/div&gt;
+
+
+                        &lt;/div&gt;
+
+                        &lt;div class=&quot;col-lg-6 col-md-6 col-sm-6&quot;&gt;
+                            &lt;div class=&quot;block-image background-scale&quot;&gt;
+                                &lt;img class=&quot;img-responsive center-block&quot; src=&quot;static/assets/img/join.png&quot; alt=&quot;&quot;&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt; 
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+
+
+        &lt;section id=&quot;footer&quot;&gt;
+                    &lt;div class=&quot;container&quot;&gt;
+                        &lt;div class=&quot;row&quot;&gt;
+                            &lt;div class=&quot;col-md-6 col-md-offset-3&quot;&gt;
+
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;row&quot;&gt;
+                            &lt;div class=&quot;col-md-12&quot;&gt;
+                                &lt;div class=&quot;copy-right-text text-center&quot;&gt;
+                                    &amp;copy;聚鑫有限公司
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+        &lt;/section&gt;
+
+
+
+
+    &lt;/div&gt;
+&lt;/template&gt;
+
+
+
+&lt;script&gt;
+import Header from &#39;@/components/Header&#39;
+export default {
+    data() {
+        return {
+            is_show:false,
+            one_user:new Array(),
+
+        }
+    },
+    components:{
+      &#39;Header&#39;:Header
+    },
+    methods: {
+        call_num(){
+            this.is_show = true
+        },
+        fulfill(id){
+            let formdata = new FormData()
+            formdata.append(&#39;id&#39;,id)
+            this.axios({
+                url:&#39;http://127.0.0.1:8000/api/delete/&#39;,
+                method:&#39;post&#39;,
+                data:formdata
+            }).then(res=&gt;{
+                if (res.data.code == 200){
+                    window.location.reload() 
+                }
+            })
+        },
+        down(id){
+            let formdata = new FormData()
+            formdata.append(&#39;id&#39;,id)
+            this.axios({
+                url:&#39;http://127.0.0.1:8000/api/down_num/&#39;,
+                method:&#39;post&#39;,
+                data:formdata
+            }).then(res=&gt;{
+                if (res.data.code == 200){
+                    this.one_user = res.data.data
+                }
+            })
+        }
+
+    },
+    mounted() {
+        this.axios({
+            url:&#39;http://127.0.0.1:8000/api/call_num/&#39;,
+            method:&#39;get&#39;
+        }).then(res=&gt;{
+            if (res.data.code == 200){
+                this.one_user = res.data.data
+            }
+
+        })
+    }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+.FontColor{
+    color: red;
+}
+
+.window{
+    font-size: 35px;
+    color: red;
+}
+&lt;/style&gt;
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
