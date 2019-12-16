@@ -23,11 +23,11 @@
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2014-05-13T11:11:00+02:00">
+        <abbr class="published" title="2014-05-13T10:11:00+02:00">
                 Published: 周二 13 五月 2014
         </abbr>
 		<br />
-        <abbr class="modified" title="2014-05-13T11:11:00+02:00">
+        <abbr class="modified" title="2014-05-13T10:11:00+02:00">
                 Updated: 周二 13 五月 2014
         </abbr>
 
@@ -36,160 +36,7 @@
         </address>
 <p>In <a href="/category/python.html">Python</a>.</p>
 <p>tags: <a href="/tag/python.html">Python</a> </p>
-</footer><!-- /.post-info -->      <div class="highlight"><pre><span></span>&lt;template&gt;
-    &lt;div&gt;
-
-        &lt;Header&gt;&lt;/Header&gt;
-
-
-
-        &lt;section class=&quot;gallery-content&quot;&gt;
-            &lt;div class=&quot;container&quot;&gt;
-                &lt;div class=&quot;row port&quot;&gt;
-                    &lt;div class=&quot;col-md-8 col-md-offset-2 text-center button-group&quot; id=&quot;filters&quot;&gt;
-
-                        &lt;button class=&quot;gallery-btn btn-primary btn is-checked&quot; @click=&quot;call_num&quot;&gt;叫号&lt;/button&gt;
-                        &lt;button class=&quot;gallery-btn btn-primary btn&quot; @click=&quot;down(one_user.id)&quot;&gt;过号&lt;/button&gt;
-                        &lt;button class=&quot;gallery-btn btn-primary btn&quot; @click=&quot;fulfill(one_user.id)&quot; v-show=&quot;is_show&quot;&gt;完成&lt;/button&gt;
-
-                    &lt;/div&gt;
-                &lt;/div&gt;
-
-            &lt;/div&gt;
-        &lt;/section&gt;
-
-
-
-
-
-
-    &lt;section id=&quot;job&quot;&gt;
-            &lt;div class= &quot;job-wrapper&quot;&gt;
-                &lt;div class=&quot;container&quot;&gt;
-                    &lt;div class=&quot;row&quot;&gt;
-                        &lt;div class=&quot;col-lg-6 col-md-6 col-sm-6&quot;&gt;
-
-                            &lt;div v-show=&quot;is_show&quot;&gt;
-
-                                &lt;p class=&quot;window&quot;&gt;
-                                    aaaaaa
-                                    &lt;span&gt;{{ one_user.book_rank }}&lt;/span&gt;
-                                    &lt;!-- &lt;span&gt;{{ one_user.bady_id.name }}&lt;/span&gt;
-                                    &lt;span&gt;{{ one_user.bady_id.sex }}&lt;/span&gt; --&gt;
-
-                                &lt;/p&gt;
-
-                            &lt;/div&gt;
-
-
-                        &lt;/div&gt;
-
-                        &lt;div class=&quot;col-lg-6 col-md-6 col-sm-6&quot;&gt;
-                            &lt;div class=&quot;block-image background-scale&quot;&gt;
-                                &lt;img class=&quot;img-responsive center-block&quot; src=&quot;static/assets/img/join.png&quot; alt=&quot;&quot;&gt;
-                            &lt;/div&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt; 
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/section&gt;
-
-
-
-        &lt;section id=&quot;footer&quot;&gt;
-                    &lt;div class=&quot;container&quot;&gt;
-                        &lt;div class=&quot;row&quot;&gt;
-                            &lt;div class=&quot;col-md-6 col-md-offset-3&quot;&gt;
-
-                            &lt;/div&gt;
-                        &lt;/div&gt;
-                        &lt;div class=&quot;row&quot;&gt;
-                            &lt;div class=&quot;col-md-12&quot;&gt;
-                                &lt;div class=&quot;copy-right-text text-center&quot;&gt;
-                                    &amp;copy;聚鑫有限公司
-                                &lt;/div&gt;
-                            &lt;/div&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-        &lt;/section&gt;
-
-
-
-
-    &lt;/div&gt;
-&lt;/template&gt;
-
-
-
-&lt;script&gt;
-import Header from &#39;@/components/Header&#39;
-export default {
-    data() {
-        return {
-            is_show:false,
-            one_user:new Array(),
-
-        }
-    },
-    components:{
-      &#39;Header&#39;:Header
-    },
-    methods: {
-        call_num(){
-            this.is_show = true
-        },
-        fulfill(id){
-            let formdata = new FormData()
-            formdata.append(&#39;id&#39;,id)
-            this.axios({
-                url:&#39;http://127.0.0.1:8000/api/delete/&#39;,
-                method:&#39;post&#39;,
-                data:formdata
-            }).then(res=&gt;{
-                if (res.data.code == 200){
-                    window.location.reload() 
-                }
-            })
-        },
-        down(id){
-            let formdata = new FormData()
-            formdata.append(&#39;id&#39;,id)
-            this.axios({
-                url:&#39;http://127.0.0.1:8000/api/down_num/&#39;,
-                method:&#39;post&#39;,
-                data:formdata
-            }).then(res=&gt;{
-                if (res.data.code == 200){
-                    this.one_user = res.data.data
-                }
-            })
-        }
-
-    },
-    mounted() {
-        this.axios({
-            url:&#39;http://127.0.0.1:8000/api/call_num/&#39;,
-            method:&#39;get&#39;
-        }).then(res=&gt;{
-            if (res.data.code == 200){
-                this.one_user = res.data.data
-            }
-
-        })
-    }
-}
-&lt;/script&gt;
-
-&lt;style&gt;
-.FontColor{
-    color: red;
-}
-
-.window{
-    font-size: 35px;
-    color: red;
-}
-&lt;/style&gt;
+</footer><!-- /.post-info -->      <div class="highlight"><pre><span></span>初次使用，旅程将从这里开始
 </pre></div>
     </div><!-- /.entry-content -->
 
