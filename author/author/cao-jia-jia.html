@@ -2,7 +2,7 @@
 <html lang="chinese (simplified)">
 <head>
         <meta charset="utf-8" />
-        <title>佳哥博客 - Python</title>
+        <title>佳哥博客 - 曹佳佳</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
 </head>
 
@@ -11,67 +11,13 @@
                 <h1><a href="/">佳哥博客 </a></h1>
                 <nav><ul>
                     <li><a href="/category/gitda-jian-bo-ke.html">Git搭建博客</a></li>
-                    <li class="active"><a href="/category/python.html">Python</a></li>
+                    <li><a href="/category/python.html">Python</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/Python文件.html">python的初级切片</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2014-05-15T09:40:00+02:00">
-                Published: 周四 15 五月 2014
-        </abbr>
-		<br />
-        <abbr class="modified" title="2014-05-15T09:40:00+02:00">
-                Updated: 周四 15 五月 2014
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/jia-ge.html">佳哥</a>
-        </address>
-<p>In <a href="/category/python.html">Python</a>.</p>
-<p>tags: <a href="/tag/pythonwen-jian.html">Python文件</a> </p>
-</footer><!-- /.post-info --><p>&lt;1&gt;文件重命名     </p>
-<p>os模块中的rename()可以完成对文件的重命名操作    </p>
-<p>格式：  rename ("老文件名","新文件名")       </p>
-<p>例如：    </p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>    
-<span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;xxx.txt&quot;</span><span class="p">,</span><span class="s2">&quot;新文件名&quot;</span><span class="p">)</span>      
-</pre></div>
-
-
-<p>&lt;2&gt;删除文件       </p>
-<p><code>os.remove("1.txt")</code>      </p>
-<p>&lt;3&gt;创建文件夹    </p>
-<p><code>os.mkdir("baobao")</code>        </p>
-<p>&lt;4&gt;获取当前目录     </p>
-<p><code>print(os.getcwd())</code>        </p>
-<p>&lt;5&gt;改变默认目录        </p>
-<div class="highlight"><pre><span></span><span class="cp">../   是父级</span>
-./    是同级   
-os.chdir(&quot;../&quot;)
-print(os.getcwd())
-</pre></div>
-
-
-<p>&lt;6&gt;获取目录列表     </p>
-<p><code>print(os.listdir("./"))</code>     </p>
-<p>&lt;7&gt;删除文件夹    </p>
-<p><code>os.rmdir("baobao")</code>     </p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/Python列表.html" rel="bookmark"
-                           title="Permalink to python的初级切片">python的初级切片</a></h1>
-                </header>
-
-                <div class="entry-content">
+                    <h1 class="entry-title"><a href="/Python列表.html">python的初级切片</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2014-05-14T15:40:00+02:00">
                 Published: 周三 14 五月 2014
@@ -86,7 +32,7 @@ print(os.getcwd())
         </address>
 <p>In <a href="/category/python.html">Python</a>.</p>
 <p>tags: <a href="/tag/pythonlie-biao.html">Python列表</a> </p>
-</footer><!-- /.post-info -->                <p>列表的格式： 变量的类型为列表，列表中的元素可以是不同类型的。   </p>
+</footer><!-- /.post-info --><p>列表的格式： 变量的类型为列表，列表中的元素可以是不同类型的。   </p>
 <p>列表中存放的数据是可以进行修改的，比如“增” “删” “改” “查 ”。   </p>
 <p>1例如：  </p>
 <p>list = ['我','爱','你']    </p>
@@ -107,10 +53,24 @@ print(os.getcwd())
 <p>​      爱      </p>
 <p>​      你       </p>
 <p>4在while里面用     加length长度         </p>
-<p>list = ['我','爱' …</p>
-                <a class="readmore" href="/Python列表.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
+<p>list = ['我','爱','你']       </p>
+<p>length = len(list)      </p>
+<p>i = 0    </p>
+<p>while   i &lt; length:     </p>
+<p>​         print(list[1])     </p>
+<p>​          i += 1       </p>
+<p>结果：       </p>
+<p>​        我      </p>
+<p>​        爱       </p>
+<p>​        你       </p>
+<p>静态列表：       </p>
+<p>a = list()      </p>
+<p>print(a)         </p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
 
             <li><article class="hentry">
                 <header>
@@ -156,6 +116,53 @@ print(os.getcwd())
     <span class="err">我喜欢你</span>
 </pre></div>
                 <a class="readmore" href="/Python切片.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/Git1.html" rel="bookmark"
+                           title="Permalink to 个人搭建博客">个人搭建博客</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2014-05-13T13:30:00+02:00">
+                Published: 周二 13 五月 2014
+        </abbr>
+		<br />
+        <abbr class="modified" title="2014-05-13T13:30:00+02:00">
+                Updated: 周二 13 五月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/cao-jia-jia.html">曹佳佳</a>
+        </address>
+<p>In <a href="/category/gitda-jian-bo-ke.html">Git搭建博客</a>.</p>
+<p>tags: <a href="/tag/git.html">Git</a> </p>
+</footer><!-- /.post-info -->                <p>1)安装pelcan和markdown  </p>
+<div class="highlight"><pre><span></span>pip install pelican  markdown --upgrade
+</pre></div>
+
+
+<p>2)创建一个文件夹用来作为博客的目录  </p>
+<div class="highlight"><pre><span></span>mkdir 博客目录
+</pre></div>
+
+
+<p>3)cd到该目录下运行命令生成博客的框架  </p>
+<div class="highlight"><pre><span></span><span class="n">cd</span> <span class="err">博客目录</span>
+<span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span>
+</pre></div>
+
+
+<p>4)安装过程中会有很多的配置，不知道的可以直接n，后期都是可以进行修改的  </p>
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="nv">Where</span> <span class="k">do</span> <span class="nv">you</span> <span class="nv">want</span> <span class="nv">to</span> <span class="nv">create</span> <span class="nv">your</span> <span class="nv">new</span> <span class="nv">web</span> <span class="nv">site</span>? [.]  
+
+<span class="o">&gt;</span> <span class="nv">What</span> <span class="nv">will</span> <span class="nv">be</span> <span class="nv">the</span> <span class="nv">title</span> <span class="nv">of</span> <span class="nv">this</span> <span class="nv">web</span> <span class="nv">site</span>? 我的技术博客  
+
+<span class="o">&gt;</span> <span class="nv">Who</span> <span class="nv">will</span> <span class="nv">be</span> <span class="nv">the</span> <span class="nv">author</span> <span class="nv">of</span> <span class="nv">this</span> <span class="nv">web</span> <span class="nv">site …</span></pre></div>
+                <a class="readmore" href="/Git1.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 

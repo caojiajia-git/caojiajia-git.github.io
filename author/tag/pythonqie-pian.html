@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="chinese (simplified)">
+<head>
+        <meta charset="utf-8" />
+        <title>佳哥博客 - Python切片</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">佳哥博客 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/gitda-jian-bo-ke.html">Git搭建博客</a></li>
+                    <li><a href="/category/python.html">Python</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/Python切片.html">python的初级切片</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-05-14T10:20:00+02:00">
+                Published: 周三 14 五月 2014
+        </abbr>
+		<br />
+        <abbr class="modified" title="2014-05-14T10:20:00+02:00">
+                Updated: 周三 14 五月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/cao-jia-jia.html">曹佳佳</a>
+        </address>
+<p>In <a href="/category/python.html">Python</a>.</p>
+<p>tags: <a href="/tag/pythonqie-pian.html">Python切片</a> </p>
+</footer><!-- /.post-info --><p>昨天有朋友问了我一个初级的切片问题，让我帮理解一下，<br>
+那今天就简单的为一些初学者解答一下，如有不好还请多见谅哦！    </p>
+<p>切片的语法： [起始下标：结束：步长]  <br>
+1. 切片是指对操作的的对象截取其中一部分的操作。 <br>
+2.字符串,列表，元组都支持切片操作。  <br>
+注意： <br>
+        选取的区间以“起始”位开始，到“结束”位的前一位结束（不包含结束本身）步长表示选取间隔。   </p>
+<div class="highlight"><pre><span></span><span class="s s-Atom">a=</span><span class="s2">&quot;abcdefg&quot;</span>   
+<span class="s s-Atom">b</span><span class="o">=</span><span class="s s-Atom">a</span><span class="p">[</span>  <span class="s s-Atom">:</span><span class="mi">5</span><span class="s s-Atom">:</span><span class="mi">2</span><span class="p">]</span>   <span class="o">/</span>   <span class="s s-Atom">b</span><span class="o">=</span><span class="s s-Atom">a</span><span class="p">[</span> <span class="s s-Atom">:</span> <span class="p">:-</span><span class="mi">1</span><span class="p">]</span>  
+
+<span class="nf">print</span><span class="p">(</span><span class="s s-Atom">b</span><span class="p">)</span>   
+<span class="s s-Atom">结果：</span>   
+    <span class="s s-Atom">ace</span>   <span class="o">/</span>   <span class="s s-Atom">gfedcba</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="ss">&quot;我速度喜看见欢几个你&quot;</span>    
+<span class="n">b</span><span class="o">=</span><span class="n">a</span><span class="p">[</span> <span class="p">:</span> <span class="p">:</span> <span class="mi">3</span><span class="p">]</span>   
+<span class="n">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>    
+<span class="err">结果：</span>    
+    <span class="err">我喜欢你</span>
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

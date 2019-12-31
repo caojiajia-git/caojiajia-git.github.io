@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="chinese (simplified)">
+<head>
+        <meta charset="utf-8" />
+        <title>佳哥博客 - 佳哥</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">佳哥博客 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/gitda-jian-bo-ke.html">Git搭建博客</a></li>
+                    <li><a href="/category/python.html">Python</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/Python文件.html">python的初级切片</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-05-15T09:40:00+02:00">
+                Published: 周四 15 五月 2014
+        </abbr>
+		<br />
+        <abbr class="modified" title="2014-05-15T09:40:00+02:00">
+                Updated: 周四 15 五月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/jia-ge.html">佳哥</a>
+        </address>
+<p>In <a href="/category/python.html">Python</a>.</p>
+<p>tags: <a href="/tag/pythonwen-jian.html">Python文件</a> </p>
+</footer><!-- /.post-info --><p>&lt;1&gt;文件重命名     </p>
+<p>os模块中的rename()可以完成对文件的重命名操作    </p>
+<p>格式：  rename ("老文件名","新文件名")       </p>
+<p>例如：    </p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>    
+<span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;xxx.txt&quot;</span><span class="p">,</span><span class="s2">&quot;新文件名&quot;</span><span class="p">)</span>      
+</pre></div>
+
+
+<p>&lt;2&gt;删除文件       </p>
+<p><code>os.remove("1.txt")</code>      </p>
+<p>&lt;3&gt;创建文件夹    </p>
+<p><code>os.mkdir("baobao")</code>        </p>
+<p>&lt;4&gt;获取当前目录     </p>
+<p><code>print(os.getcwd())</code>        </p>
+<p>&lt;5&gt;改变默认目录        </p>
+<div class="highlight"><pre><span></span><span class="cp">../   是父级</span>
+./    是同级   
+os.chdir(&quot;../&quot;)
+print(os.getcwd())
+</pre></div>
+
+
+<p>&lt;6&gt;获取目录列表     </p>
+<p><code>print(os.listdir("./"))</code>     </p>
+<p>&lt;7&gt;删除文件夹    </p>
+<p><code>os.rmdir("baobao")</code>     </p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
