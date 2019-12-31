@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="chinese (simplified)">
+<head>
+        <meta charset="utf-8" />
+        <title>佳哥博客 - flask富文本</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">佳哥博客 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/flask.html">Flask</a></li>
+                    <li><a href="/category/gitda-jian-bo-ke.html">Git搭建博客</a></li>
+                    <li><a href="/category/python.html">Python</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/Flask.html">Flask富文本</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-05-15T09:40:00+02:00">
+                Published: 周四 15 五月 2014
+        </abbr>
+		<br />
+        <abbr class="modified" title="2014-05-15T09:40:00+02:00">
+                Updated: 周四 15 五月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/jia-ge.html">佳哥</a>
+        </address>
+<p>In <a href="/category/flask.html">Flask</a>.</p>
+<p>tags: <a href="/tag/flaskfu-wen-ben.html">flask富文本</a> </p>
+</footer><!-- /.post-info --><p>1、先插入插件static ，在 static 里面包含: js 和 tinymce      </p>
+<p>2、在添加HTML页面中写入       </p>
+<div class="highlight"><pre><span></span> <span class="cp">{%</span> <span class="k">block</span> <span class="nv">script</span> <span class="cp">%}</span>                <span class="c">&lt;!--这个标签script也可以用title--&gt;</span>
+        <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;../static/tinymce/js/tinymce/tinymce.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;../static/js/tinymce_setup.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>          <span class="c">&lt;!--富文本用--&gt;</span>
+ <span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">script</span> <span class="cp">%}</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+        添加标题：<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;br&gt;</span>
+        添加内容：<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;content&quot;</span> <span class="na">id=</span><span class="s">&quot;rich_content&quot;</span><span class="nt">&gt;&lt;br&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;确认添加&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">content</span> <span class="cp">%}</span>
+</pre></div>
+
+
+<p>3、在py中再进行判断就可以了      </p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

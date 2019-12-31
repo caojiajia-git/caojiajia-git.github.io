@@ -10,6 +10,7 @@
         <header id="banner" class="body">
                 <h1><a href="/">佳哥博客 </a></h1>
                 <nav><ul>
+                    <li><a href="/category/flask.html">Flask</a></li>
                     <li><a href="/category/gitda-jian-bo-ke.html">Git搭建博客</a></li>
                     <li><a href="/category/python.html">Python</a></li>
                 </ul></nav>
@@ -17,7 +18,53 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/Python文件.html">python的文件</a></h1>
+                    <h1 class="entry-title"><a href="/Flask.html">Flask富文本</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-05-15T09:40:00+02:00">
+                Published: 周四 15 五月 2014
+        </abbr>
+		<br />
+        <abbr class="modified" title="2014-05-15T09:40:00+02:00">
+                Updated: 周四 15 五月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/jia-ge.html">佳哥</a>
+        </address>
+<p>In <a href="/category/flask.html">Flask</a>.</p>
+<p>tags: <a href="/tag/flaskfu-wen-ben.html">flask富文本</a> </p>
+</footer><!-- /.post-info --><p>1、先插入插件static ，在 static 里面包含: js 和 tinymce      </p>
+<p>2、在添加HTML页面中写入       </p>
+<div class="highlight"><pre><span></span> <span class="cp">{%</span> <span class="k">block</span> <span class="nv">script</span> <span class="cp">%}</span>                <span class="c">&lt;!--这个标签script也可以用title--&gt;</span>
+        <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;../static/tinymce/js/tinymce/tinymce.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;../static/js/tinymce_setup.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>          <span class="c">&lt;!--富文本用--&gt;</span>
+ <span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">script</span> <span class="cp">%}</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+        添加标题：<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;br&gt;</span>
+        添加内容：<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;content&quot;</span> <span class="na">id=</span><span class="s">&quot;rich_content&quot;</span><span class="nt">&gt;&lt;br&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;确认添加&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">content</span> <span class="cp">%}</span>
+</pre></div>
+
+
+<p>3、在py中再进行判断就可以了      </p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/Python文件.html" rel="bookmark"
+                           title="Permalink to python的文件">python的文件</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-05-15T09:40:00+02:00">
                 Published: 周四 15 五月 2014
@@ -32,7 +79,7 @@
         </address>
 <p>In <a href="/category/python.html">Python</a>.</p>
 <p>tags: <a href="/tag/pythonwen-jian.html">Python文件</a> </p>
-</footer><!-- /.post-info --><p>&lt;1&gt;文件重命名     </p>
+</footer><!-- /.post-info -->                <p>&lt;1&gt;文件重命名     </p>
 <p>os模块中的rename()可以完成对文件的重命名操作    </p>
 <p>格式：  rename ("老文件名","新文件名")       </p>
 <p>例如：    </p>
@@ -58,12 +105,10 @@ print(os.getcwd())
 <p>&lt;6&gt;获取目录列表     </p>
 <p><code>print(os.listdir("./"))</code>     </p>
 <p>&lt;7&gt;删除文件夹    </p>
-<p><code>os.rmdir("baobao")</code>     </p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p><code>os.rmdir …</code></p>
+                <a class="readmore" href="/Python文件.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
