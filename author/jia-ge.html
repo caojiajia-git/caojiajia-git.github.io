@@ -18,7 +18,83 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/Flask.html">Flask富文本</a></h1>
+                    <h1 class="entry-title"><a href="/Flask评论框.html">Flask评论框</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-05-16T10:25:00+02:00">
+                Published: 周五 16 五月 2014
+        </abbr>
+		<br />
+        <abbr class="modified" title="2014-05-16T10:25:00+02:00">
+                Updated: 周五 16 五月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/jia-ge.html">佳哥</a>
+        </address>
+<p>In <a href="/category/flask.html">Flask</a>.</p>
+<p>tags: <a href="/tag/flaskping-lun-kuang.html">Flask评论框</a> </p>
+</footer><!-- /.post-info --><p>1、在py里设置视图函数    </p>
+<div class="highlight"><pre><span></span>#详情
+@<span class="nv">app</span>.<span class="nv">route</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">/detail</span><span class="s1">&#39;</span><span class="ss">)</span>
+<span class="nv">def</span> <span class="nv">detail</span><span class="ss">()</span>:
+    <span class="nv">id</span> <span class="o">=</span> <span class="nv">request</span>.<span class="nv">args</span>.<span class="nv">get</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">id</span><span class="s1">&#39;</span><span class="ss">)</span>
+    <span class="nv">one_wz</span> <span class="o">=</span> <span class="nv">Wz</span>.<span class="nv">query</span>.<span class="nv">get</span><span class="ss">(</span><span class="nv">id</span><span class="ss">)</span>
+    <span class="nv">pls</span> <span class="o">=</span> <span class="nv">Pl</span>.<span class="nv">query</span>.<span class="nv">filter</span><span class="ss">(</span><span class="nv">Pl</span>.<span class="nv">w_id</span><span class="o">==</span><span class="nv">id</span><span class="ss">)</span>.<span class="nv">all</span><span class="ss">()</span>       #  外键所指向的<span class="nv">id</span>的所有评论
+    <span class="k">return</span> <span class="nv">render_template</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">detail.html</span><span class="s1">&#39;</span>,<span class="nv">one_wz</span><span class="o">=</span><span class="nv">one_wz</span>,<span class="nv">pls</span><span class="o">=</span><span class="nv">pls</span><span class="ss">)</span> 
+
+# 添加评论
+@<span class="nv">app</span>.<span class="nv">route</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">/add_pinglun</span><span class="s1">&#39;</span>,<span class="nv">methods</span><span class="o">=</span>[<span class="s1">&#39;</span><span class="s">GET</span><span class="s1">&#39;</span>,<span class="s1">&#39;</span><span class="s">POST</span><span class="s1">&#39;</span>]<span class="ss">)</span>
+<span class="nv">def</span> <span class="nv">add_pinglun</span><span class="ss">()</span>:
+    <span class="nv">id</span> <span class="o">=</span> <span class="nv">request</span>.<span class="nv">args</span>.<span class="nv">get</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">id</span><span class="s1">&#39;</span><span class="ss">)</span>
+    <span class="k">if</span> <span class="nv">request</span>.<span class="nv">method</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="s">POST</span><span class="s1">&#39;</span>:
+        <span class="nv">pl</span> <span class="o">=</span> <span class="nv">request</span>.<span class="nv">form</span>.<span class="nv">get</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">pl</span><span class="s1">&#39;</span><span class="ss">)</span>
+        <span class="nv">one_pl</span> <span class="o">=</span> <span class="nv">Pl</span><span class="ss">(</span><span class="nv">pl</span><span class="o">=</span><span class="nv">pl</span>,<span class="nv">w_id</span><span class="o">=</span><span class="nv">id</span><span class="ss">)</span>
+        <span class="nv">db</span>.<span class="nv">session</span>.<span class="nv">add</span><span class="ss">(</span><span class="nv">one_pl</span><span class="ss">)</span>
+    <span class="k">return</span> <span class="nv">redirect</span><span class="ss">(</span><span class="nv">url_for</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">detail</span><span class="s1">&#39;</span>,<span class="nv">id</span><span class="o">=</span><span class="nv">id</span><span class="ss">))</span>
+</pre></div>
+
+
+<p>2、主要的是要在展示的那个模板里【下面这是在详情页模板里面展示的，所以不用设置评论模板】，   </p>
+<p>​      用 fieldset这个标签构成评论区那个框架，再用  legend这个标签添加评论 ，然后用form表单给与地址、id，</p>
+<p>​      最后在表单里用<textarea name="pl" id="" cols="30" rows="10">标签，</p>
+<p>​      给与 大小 就可以了  </p>
+<div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+
+        文章标题：<span class="cp">{{</span> <span class="nv">one_wz.title</span> <span class="cp">}}</span><span class="nt">&lt;br&gt;</span>
+        文章内容：<span class="cp">{{</span> <span class="nv">one_wz.content</span> <span class="o">|</span> <span class="nf">safe</span> <span class="cp">}}</span><span class="nt">&lt;br&gt;</span>
+
+   <span class="nt">&lt;fieldset&gt;</span>
+    <span class="nt">&lt;legend&gt;</span>添加评论<span class="nt">&lt;/legend&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">url_for</span><span class="o">(</span><span class="s1">&#39;add_pinglun&#39;</span><span class="o">,</span><span class="nv">id</span><span class="o">=</span><span class="nv">one_wz.id</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;textarea</span> <span class="na">name=</span><span class="s">&quot;pl&quot;</span> <span class="na">id=</span><span class="s">&quot;&quot;</span> <span class="na">cols=</span><span class="s">&quot;30&quot;</span> <span class="na">rows=</span><span class="s">&quot;10&quot;</span><span class="nt">&gt;&lt;/textarea&gt;&lt;br&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;提交评论&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;/fieldset&gt;</span>
+
+
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">pls</span> <span class="cp">%}</span>     # 如果有评论才会显示进行下面的
+    <span class="nt">&lt;fieldset&gt;</span>
+    <span class="nt">&lt;legend&gt;</span>本文章所有评论<span class="nt">&lt;/legend&gt;</span>
+    <span class="cp">{%</span> <span class="k">for</span> <span class="nv">pl</span> <span class="k">in</span> <span class="nv">pls</span> <span class="cp">%}</span>
+        <span class="cp">{{</span> <span class="nb">loop</span><span class="nv">.index</span> <span class="cp">}}</span>、<span class="cp">{{</span> <span class="nv">pl.pl</span> <span class="cp">}}</span><span class="nt">&lt;br&gt;</span>
+    <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+    <span class="nt">&lt;/fieldset&gt;</span>
+    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">content</span> <span class="cp">%}</span>
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/Flask富文本.html" rel="bookmark"
+                           title="Permalink to Flask富文本">Flask富文本</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-05-15T09:40:00+02:00">
                 Published: 周四 15 五月 2014
@@ -33,7 +109,7 @@
         </address>
 <p>In <a href="/category/flask.html">Flask</a>.</p>
 <p>tags: <a href="/tag/flaskfu-wen-ben.html">flask富文本</a> </p>
-</footer><!-- /.post-info --><p>1、先插入插件static ，在 static 里面包含: js 和 tinymce      </p>
+</footer><!-- /.post-info -->                <p>1、先插入插件static ，在 static 里面包含: js 和 tinymce      </p>
 <p>2、在添加HTML页面中写入       </p>
 <div class="highlight"><pre><span></span> <span class="cp">{%</span> <span class="k">block</span> <span class="nv">script</span> <span class="cp">%}</span>                <span class="c">&lt;!--这个标签script也可以用title--&gt;</span>
         <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;../static/tinymce/js/tinymce/tinymce.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
@@ -44,19 +120,10 @@
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
     <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
         添加标题：<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;br&gt;</span>
-        添加内容：<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;content&quot;</span> <span class="na">id=</span><span class="s">&quot;rich_content&quot;</span><span class="nt">&gt;&lt;br&gt;</span>
-        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;确认添加&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;/form&gt;</span>
-<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">content</span> <span class="cp">%}</span>
-</pre></div>
-
-
-<p>3、在py中再进行判断就可以了      </p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+        添加内容 …</pre></div>
+                <a class="readmore" href="/Flask富文本.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
