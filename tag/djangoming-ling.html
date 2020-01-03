@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="chinese (simplified)">
+<head>
+        <meta charset="utf-8" />
+        <title>佳哥博客 - Django命令</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">佳哥博客 </a></h1>
+                <nav><ul>
+                    <li><a href="/category/django.html">Django</a></li>
+                    <li><a href="/category/flask.html">Flask</a></li>
+                    <li><a href="/category/gitda-jian-bo-ke.html">Git搭建博客</a></li>
+                    <li><a href="/category/python.html">Python</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/Django命令.html">Django安装命令</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-05-17T10:23:00+02:00">
+                Published: 周六 17 五月 2014
+        </abbr>
+		<br />
+        <abbr class="modified" title="2014-05-17T10:23:00+02:00">
+                Updated: 周六 17 五月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/jia-ge.html">佳哥</a>
+        </address>
+<p>In <a href="/category/django.html">Django</a>.</p>
+<p>tags: <a href="/tag/djangoming-ling.html">Django命令</a> </p>
+</footer><!-- /.post-info --><p>安装插件   </p>
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">Django</span> <span class="o">==</span><span class="mi">2</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">4</span>
+</pre></div>
+
+
+<p>查看版本   </p>
+<div class="highlight"><pre><span></span><span class="n">python</span>  <span class="o">-</span><span class="n">m</span>  <span class="n">Django</span>  <span class="o">-</span><span class="k">Version</span>  
+</pre></div>
+
+
+<p>生成django项目（项目名称） </p>
+<div class="highlight"><pre><span></span><span class="n">django</span><span class="o">-</span><span class="k">admin</span> <span class="n">startproject</span> <span class="err">项目名</span>
+</pre></div>
+
+
+<p>切换到创建的项目名   </p>
+<div class="highlight"><pre><span></span><span class="n">cd</span> <span class="err">项目名</span>
+</pre></div>
+
+
+<p>创建子应用name （子应用名称） </p>
+<div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="err">子应用名</span>  
+</pre></div>
+
+
+<p>启动项目（在端口输入运行） </p>
+<div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">runserver</span>
+</pre></div>
+
+
+<p>卸载django </p>
+<div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">uninstall</span> <span class="n">django</span>
+</pre></div>
+
+
+<p>数据库迁移： </p>
+<div class="highlight"><pre><span></span><span class="n">python</span>  <span class="n">manage</span><span class="p">.</span><span class="n">py</span>  <span class="n">makemigrations</span>        
+<span class="n">python</span>  <span class="n">manage</span><span class="p">.</span><span class="n">py</span>  <span class="n">migrate</span>
+</pre></div>
+
+
+<p>创建超级用户 </p>
+<div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">createsuperuser</span>
+</pre></div>
+
+
+<p>在admin.py中注册（把模型类注册到管理员站点）   </p>
+<div class="highlight"><pre><span></span><span class="err">先导包</span>
+<span class="kn">from</span> <span class="err">子应用名</span> <span class="kn">import</span> <span class="nn">models</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="err">表名</span><span class="p">)</span>
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
