@@ -20,7 +20,94 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/Spider理论.html">Spider理论</a></h1>
+                    <h1 class="entry-title"><a href="/Flask分页.html">Flask分页</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-05-22T10:36:00+02:00">
+                Published: 周四 22 五月 2014
+        </abbr>
+		<br />
+        <abbr class="modified" title="2014-05-22T10:36:00+02:00">
+                Updated: 周四 22 五月 2014
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/jia-ge.html">佳哥</a>
+        </address>
+<p>In <a href="/category/flask.html">Flask</a>.</p>
+<p>tags: <a href="/tag/flaskfen-ye.html">Flask分页</a> </p>
+</footer><!-- /.post-info --><p>1、先插入插件 static【包含 css 和 js 】 </p>
+<div class="highlight"><pre><span></span><span class="n">css</span> <span class="err">里面是</span> <span class="n">jquery</span><span class="p">.</span><span class="n">pagination</span><span class="p">.</span><span class="n">css</span>
+<span class="n">js</span> <span class="err">里面是</span>  <span class="n">jquery</span><span class="p">.</span><span class="n">js</span>  <span class="err">和</span>  <span class="n">jquery</span><span class="p">.</span><span class="n">pagination</span><span class="p">.</span><span class="k">min</span><span class="p">.</span><span class="n">js</span>
+</pre></div>
+
+
+<p>2、在base 模板头部里面写入一下用来分页继承   </p>
+<div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">block</span> <span class="nv">script</span> <span class="cp">%}</span>
+        <span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;../static/js/jquery.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>  <span class="c">&lt;!--在base中写入这个准备继承用--&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">script</span> <span class="cp">%}</span>
+</pre></div>
+
+
+<p>3、在py设置视图函数   </p>
+<div class="highlight"><pre><span></span># 展示所有商品
+@<span class="nv">app</span>.<span class="nv">route</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">/all_goods</span><span class="s1">&#39;</span><span class="ss">)</span>
+<span class="nv">def</span> <span class="nv">all_goods</span><span class="ss">()</span>:
+    <span class="nv">page</span> <span class="o">=</span> <span class="nv">int</span><span class="ss">(</span><span class="nv">request</span>.<span class="nv">args</span>.<span class="nv">get</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">page</span><span class="s1">&#39;</span>, <span class="mi">1</span><span class="ss">))</span>
+    <span class="nv">goodss</span> <span class="o">=</span> <span class="nv">Goods</span>.<span class="nv">query</span>.<span class="nv">order_by</span><span class="ss">(</span><span class="nv">Goods</span>.<span class="nv">id</span>.<span class="nv">desc</span><span class="ss">())</span>.<span class="nv">paginate</span><span class="ss">(</span><span class="nv">page</span>,<span class="mi">3</span><span class="ss">)</span>
+    <span class="k">return</span> <span class="nv">render_template</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">all_goods.html</span><span class="s1">&#39;</span>,<span class="nv">goodss</span><span class="o">=</span><span class="nv">goodss</span><span class="ss">)</span>
+</pre></div>
+
+
+<p>4、在all_goods模板中    </p>
+<div class="highlight"><pre><span></span>《1》在模板头部写入：
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">script</span> <span class="cp">%}</span>
+        <span class="cp">{{</span> <span class="nb">super</span><span class="o">()</span> <span class="cp">}}</span>
+        <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">href=</span><span class="s">&quot;../static/css/jquery.pagination.css&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;../static/js/jquery.pagination.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>         <span class="c">&lt;!--分页用--&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">script</span> <span class="cp">%}</span>
+
+
+《2》老样式      在模板body里面最后写入：
+
+    <span class="cp">{%</span> <span class="k">for</span> <span class="nv">goods</span> <span class="k">in</span> <span class="nv">range</span><span class="o">(</span><span class="m">1</span><span class="o">,</span><span class="nv">goodss.pages</span> <span class="o">+</span> <span class="m">1</span><span class="o">)</span> <span class="cp">%}</span>            <span class="c">&lt;!--分页笨办法--&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">url_for</span><span class="o">(</span><span class="s1">&#39;all_goods&#39;</span><span class="o">,</span><span class="nv">page</span><span class="o">=</span><span class="nv">goods</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">goods</span> <span class="cp">}}</span><span class="nt">&lt;/a&gt;</span>
+    <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+
+
+《2》新样式    在模板body里面最后写入：
+
+
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;page&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>          // 设置个空 div 给予 id
+    <span class="nt">&lt;script&gt;</span>
+        $(
+            function (){ 
+                $(&#39;#page&#39;).pagination(          //  通过$(&#39;#page&#39;)获取需要展示分页样式的位置,通过插件提供的方法pagination来传递次方法需要传递到参数。
+                    {                                                           
+                        currentPage:<span class="cp">{{</span> <span class="nv">goodss.page</span> <span class="cp">}}</span>,                      //  当前页
+                        totalPage:<span class="cp">{{</span> <span class="nv">goodss.pages</span> <span class="cp">}}</span>,                        // 总页数
+                        callback:function(p){                                   //让分页的页码链接起作用，需要传递当前页
+                            window.location.href = &#39;?page=&#39; + p       //拼接点击的页码数
+                        }
+                    }
+                )
+            }
+        )
+    <span class="nt">&lt;/script&gt;</span>
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/Spider理论.html" rel="bookmark"
+                           title="Permalink to Spider理论">Spider理论</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-05-18T11:15:00+02:00">
                 Published: 周日 18 五月 2014
@@ -35,7 +122,7 @@
         </address>
 <p>In <a href="/category/spider.html">Spider</a>.</p>
 <p>tags: <a href="/tag/spiderli-lun.html">Spider理论</a> </p>
-</footer><!-- /.post-info --><p>1.爬虫获取数据的用途？</p>
+</footer><!-- /.post-info -->                <p>1.爬虫获取数据的用途？</p>
 <div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">.</span><span class="err">进行在网页或者是</span><span class="n">app上进行展示</span><span class="err">。</span>
 
 <span class="mi">2</span><span class="p">.</span><span class="err">进行数据分析或者是机器学习相关的项目</span>
@@ -80,112 +167,10 @@
 
 <span class="mi">3</span><span class="p">.</span><span class="err">通过爬虫爬取数据</span>
 
-<span class="mi">4</span><span class="p">.</span><span class="err">人工收集数据（比如</span> <span class="err">问卷调查）</span>
-</pre></div>
-
-
-<p>5.爬虫的分类?</p>
-<div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">.</span><span class="err">通用爬虫</span><span class="p">:</span> <span class="err">通常指搜索引擎的爬虫（</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="p">.</span><span class="n">baidu</span><span class="p">.</span><span class="n">com</span><span class="err">）{将网上的</span>   <span class="err">所有数据进行抓取，对数据进行排名，搜索之后会按排名展示数据}。</span>
-
-<span class="err">功能</span><span class="c1">---访问网页-&gt;抓取数据-&gt;数据存储-&gt;数据处理-&gt;提供检索服务。</span>
-
-<span class="err">抓取流程</span><span class="c1">---1.给定一些起始的URL，放入待爬取队列{很多网页都有友情链接，如果爬虫漫无目的的爬取数据会爬到其它网站，不同的网站都会存在不同的外部链接，所以有可能会重复，从队列中获取可以避免重复网址的爬取}  </span>
-
-<span class="mi">2</span><span class="p">.</span><span class="err">从队列中获取</span><span class="n">url对象</span><span class="err">，开始爬取数据。</span>
-
-<span class="mi">3</span><span class="p">.</span><span class="err">分析网页，获取网页内的所有</span><span class="n">url</span><span class="err">，入队，继续重复执行第二步。</span>
-
-<span class="err">缺点</span><span class="c1">---1.抓取的数据大多是无用的。</span>
-
-           <span class="mi">2</span><span class="p">.</span> <span class="err">不能根据用户的需求来精准获取数据</span>
-
-<span class="mi">2</span><span class="p">.</span><span class="err">聚焦爬虫：针对特定网站的爬虫</span>  <span class="err">{根据需求，实现爬虫程序，抓取需要的数据。}又称之为：垂直领域爬取</span>
-
- <span class="err">网页特征</span><span class="c1">----1.网页都有自己唯一的url</span>
-
-   <span class="mi">2</span><span class="p">.</span><span class="err">网页都是</span><span class="n">html组成</span>
-
-  <span class="mi">3</span><span class="p">.</span><span class="err">传输协议都是</span><span class="n">http</span><span class="o">/</span><span class="n">https</span>
-</pre></div>
-
-
-<p>6.爬虫的流程？</p>
-<div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">.</span><span class="err">向起始</span><span class="n">url发送请求并获取响应</span><span class="err">。</span>
-
-<span class="mi">2</span><span class="p">.</span><span class="err">对响应进行提取。</span>
-
-<span class="mi">3</span><span class="p">.</span><span class="err">如果提取</span><span class="n">url则继续发送请求获取响应</span><span class="err">。</span>
-
-<span class="mi">4</span><span class="p">.</span><span class="err">如果提取数据则将数据进行保存。</span>
-</pre></div>
-
-
-<p>7.robots协议？</p>
-<div class="highlight"><pre><span></span><span class="err">答：</span><span class="n">robots协议也称为爬虫协议</span><span class="err">、机器人协议等。</span>
-
-     <span class="err">全称是</span><span class="c1">--‘网络爬虫排除标准’---Robots Exclusion Protocol</span>
-
-     <span class="err">网络通过</span><span class="n">robots协议告诉搜索引擎那些页面可以抓取或不能抓取</span><span class="err">。</span>
-
-     <span class="n">robots协议是一个道德层面的约定</span><span class="err">，爬虫作者尊不遵守完全靠自愿。</span>
-</pre></div>
-
-
-<p>8.记忆http、https的概念和区别？</p>
-<div class="highlight"><pre><span></span><span class="err">答：在发送请求获取响应的过程中就是发送</span><span class="n">http或https的请求</span><span class="err">，获取</span><span class="n">http或</span>         
-
-       <span class="n">https的响应</span><span class="err">。</span>
-
-<span class="n">http</span><span class="p">:</span>  <span class="err">超文本传输协议</span> <span class="err">，</span>  <span class="err">默认端口：</span><span class="mi">80</span>
-
-
-
-<span class="n">https</span><span class="err">：</span><span class="n">https</span> <span class="o">+</span> <span class="n">ssl</span>   <span class="err">既带有安全套接字层的超文本传输协议。</span>
-
-      <span class="err">默认端口：</span><span class="mi">443</span>
-
-<span class="n">https</span> <span class="err">比</span> <span class="n">http</span> <span class="err">更安全，但是性能更低。</span>
-</pre></div>
-
-
-<p>9.http请求的过程？</p>
-<div class="highlight"><pre><span></span><span class="err">答：浏览器先向地址栏中的</span><span class="n">url发起请求并获取响应</span><span class="err">。</span>
-
-      <span class="err">在返回的响应内容中，会带有</span><span class="n">css</span><span class="err">、</span><span class="n">js</span><span class="err">、图片等</span><span class="n">url地址</span><span class="err">，以及</span><span class="n">ajax代码</span><span class="err">，浏览器按照响应内容中</span>
-
-     <span class="err">的顺序依次发送其它的请求，并获取相应的响应，浏览器每获取一个响应就对展示出的结果进行</span>
-
-    <span class="err">添加</span><span class="o">/</span><span class="err">加载，</span><span class="n">js</span><span class="err">、</span><span class="n">css等内容会修改页面的内容</span><span class="err">，</span><span class="n">js也可以重新发送请求获取响应</span><span class="err">。</span>
-
-   <span class="err">从获取第一个响应并在浏览器中展示，直到最终获取全部响应，并在展示的结果中添加内容或</span>
-
-   <span class="err">修改，这个过程叫做</span><span class="c1">------‘浏览器的渲染’。</span>
-</pre></div>
-
-
-<p>10.BeautifulSoup解析库</p>
-<div class="highlight"><pre><span></span><span class="n">BeautifulSoup也是一种解析库</span>
-
-<span class="n">BS解析数据是依赖解析器的</span><span class="err">，</span>
-
-<span class="err">支持的解析器</span> <span class="n">html</span><span class="p">.</span><span class="n">parse</span><span class="p">,</span>  <span class="n">lxml</span><span class="p">,</span>  <span class="n">xml</span><span class="p">,</span>   <span class="n">html5lib等</span><span class="err">，</span><span class="n">xlml解析器解析速度最快</span><span class="err">，容错能力强。</span>
-</pre></div>
-
-
-<p>11.get和post请求方式的区别？</p>
-<div class="highlight"><pre><span></span><span class="k">Get</span><span class="err">：通过</span><span class="n">url地址栏传递参数</span><span class="err">，有长度限制，相对来说不够安全。</span>
-
-<span class="n">Post</span><span class="err">：通过</span><span class="n">request</span> <span class="n">body传递参数</span><span class="err">，没有长度限制，更加安全。</span>
-
-<span class="n">get请求中的参数包含在url里面</span><span class="err">，数据可以在</span><span class="n">url中看到</span><span class="err">，而</span><span class="n">post请求的url不会包含这些数据</span><span class="err">，</span><span class="n">post的数据都是通过表单形式传输的</span><span class="err">，会包含在请求体中。</span>
-
-<span class="n">get请求提交的数据最多只有1024字节</span><span class="err">，而</span><span class="n">post方式没有限制</span><span class="err">。</span>
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<span class="mi">4 …</span></pre></div>
+                <a class="readmore" href="/Spider理论.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>

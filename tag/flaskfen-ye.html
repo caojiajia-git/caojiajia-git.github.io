@@ -2,7 +2,7 @@
 <html lang="chinese (simplified)">
 <head>
         <meta charset="utf-8" />
-        <title>佳哥博客 - Flask</title>
+        <title>佳哥博客 - Flask分页</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
 </head>
 
@@ -11,7 +11,7 @@
                 <h1><a href="/">佳哥博客 </a></h1>
                 <nav><ul>
                     <li><a href="/category/django.html">Django</a></li>
-                    <li class="active"><a href="/category/flask.html">Flask</a></li>
+                    <li><a href="/category/flask.html">Flask</a></li>
                     <li><a href="/category/gitda-jian-bo-ke.html">Git搭建博客</a></li>
                     <li><a href="/category/python.html">Python</a></li>
                     <li><a href="/category/spider.html">Spider</a></li>
@@ -96,87 +96,6 @@
     <span class="nt">&lt;/script&gt;</span>
 </pre></div>                </article>
             </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/Flask评论框.html" rel="bookmark"
-                           title="Permalink to Flask评论框">Flask评论框</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-05-16T10:25:00+02:00">
-                Published: 周五 16 五月 2014
-        </abbr>
-		<br />
-        <abbr class="modified" title="2014-05-16T10:25:00+02:00">
-                Updated: 周五 16 五月 2014
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/jia-ge.html">佳哥</a>
-        </address>
-<p>In <a href="/category/flask.html">Flask</a>.</p>
-<p>tags: <a href="/tag/flaskping-lun-kuang.html">Flask评论框</a> </p>
-</footer><!-- /.post-info -->                <p>1、在py里设置视图函数    </p>
-<div class="highlight"><pre><span></span>#详情
-@<span class="nv">app</span>.<span class="nv">route</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">/detail</span><span class="s1">&#39;</span><span class="ss">)</span>
-<span class="nv">def</span> <span class="nv">detail</span><span class="ss">()</span>:
-    <span class="nv">id</span> <span class="o">=</span> <span class="nv">request</span>.<span class="nv">args</span>.<span class="nv">get</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">id</span><span class="s1">&#39;</span><span class="ss">)</span>
-    <span class="nv">one_wz</span> <span class="o">=</span> <span class="nv">Wz</span>.<span class="nv">query</span>.<span class="nv">get</span><span class="ss">(</span><span class="nv">id</span><span class="ss">)</span>
-    <span class="nv">pls</span> <span class="o">=</span> <span class="nv">Pl</span>.<span class="nv">query</span>.<span class="nv">filter</span><span class="ss">(</span><span class="nv">Pl</span>.<span class="nv">w_id</span><span class="o">==</span><span class="nv">id</span><span class="ss">)</span>.<span class="nv">all</span><span class="ss">()</span>       #  外键所指向的<span class="nv">id</span>的所有评论
-    <span class="k">return</span> <span class="nv">render_template</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">detail.html</span><span class="s1">&#39;</span>,<span class="nv">one_wz</span><span class="o">=</span><span class="nv">one_wz</span>,<span class="nv">pls</span><span class="o">=</span><span class="nv">pls</span><span class="ss">)</span> 
-
-# 添加评论
-@<span class="nv">app</span>.<span class="nv">route</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">/add_pinglun</span><span class="s1">&#39;</span>,<span class="nv">methods</span><span class="o">=</span>[<span class="s1">&#39;</span><span class="s">GET</span><span class="s1">&#39;</span>,<span class="s1">&#39;</span><span class="s">POST</span><span class="s1">&#39;</span>]<span class="ss">)</span>
-<span class="nv">def</span> <span class="nv">add_pinglun</span><span class="ss">()</span>:
-    <span class="nv">id</span> <span class="o">=</span> <span class="nv">request</span>.<span class="nv">args</span>.<span class="nv">get …</span></pre></div>
-                <a class="readmore" href="/Flask评论框.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/Flask富文本.html" rel="bookmark"
-                           title="Permalink to Flask富文本">Flask富文本</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-05-15T09:40:00+02:00">
-                Published: 周四 15 五月 2014
-        </abbr>
-		<br />
-        <abbr class="modified" title="2014-05-15T09:40:00+02:00">
-                Updated: 周四 15 五月 2014
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/jia-ge.html">佳哥</a>
-        </address>
-<p>In <a href="/category/flask.html">Flask</a>.</p>
-<p>tags: <a href="/tag/flaskfu-wen-ben.html">Flask富文本</a> </p>
-</footer><!-- /.post-info -->                <p>1、先插入插件static ，在 static 里面包含: js 和 tinymce      </p>
-<p>2、在添加HTML页面中写入       </p>
-<div class="highlight"><pre><span></span> <span class="cp">{%</span> <span class="k">block</span> <span class="nv">script</span> <span class="cp">%}</span>                <span class="c">&lt;!--这个标签script也可以用title--&gt;</span>
-        <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;../static/tinymce/js/tinymce/tinymce.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-        <span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">&quot;../static/js/tinymce_setup.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>          <span class="c">&lt;!--富文本用--&gt;</span>
- <span class="cp">{%</span> <span class="k">endblock</span> <span class="nv">script</span> <span class="cp">%}</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-<span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
-    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
-        添加标题：<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;br&gt;</span>
-        添加内容 …</pre></div>
-                <a class="readmore" href="/Flask富文本.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>
