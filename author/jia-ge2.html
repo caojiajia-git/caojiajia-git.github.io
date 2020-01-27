@@ -23,6 +23,53 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/Python切片.html" rel="bookmark"
+                           title="Permalink to python的初级切片">python的初级切片</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-08-14T10:20:00+02:00">
+                Published: 周日 14 八月 2016
+        </abbr>
+		<br />
+        <abbr class="modified" title="2016-08-14T10:20:00+02:00">
+                Updated: 周日 14 八月 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/jia-ge.html">佳哥</a>
+        </address>
+<p>In <a href="/category/python.html">Python</a>.</p>
+<p>tags: <a href="/tag/pythonqie-pian.html">Python切片</a> </p>
+</footer><!-- /.post-info -->                <p>昨天有朋友问了我一个初级的切片问题，让我帮理解一下，<br>
+那今天就简单的为一些初学者解答一下，如有不好还请多见谅哦！    </p>
+<p>切片的语法： [起始下标：结束：步长]  <br>
+1. 切片是指对操作的的对象截取其中一部分的操作。 <br>
+2.字符串,列表，元组都支持切片操作。  <br>
+注意： <br>
+        选取的区间以“起始”位开始，到“结束”位的前一位结束（不包含结束本身）步长表示选取间隔。   </p>
+<div class="highlight"><pre><span></span><span class="s s-Atom">a=</span><span class="s2">&quot;abcdefg&quot;</span>   
+<span class="s s-Atom">b</span><span class="o">=</span><span class="s s-Atom">a</span><span class="p">[</span>  <span class="s s-Atom">:</span><span class="mi">5</span><span class="s s-Atom">:</span><span class="mi">2</span><span class="p">]</span>   <span class="o">/</span>   <span class="s s-Atom">b</span><span class="o">=</span><span class="s s-Atom">a</span><span class="p">[</span> <span class="s s-Atom">:</span> <span class="p">:-</span><span class="mi">1</span><span class="p">]</span>  
+
+<span class="nf">print</span><span class="p">(</span><span class="s s-Atom">b</span><span class="p">)</span>   
+<span class="s s-Atom">结果：</span>   
+    <span class="s s-Atom">ace</span>   <span class="o">/</span>   <span class="s s-Atom">gfedcba</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="ss">&quot;我速度喜看见欢几个你&quot;</span>    
+<span class="n">b</span><span class="o">=</span><span class="n">a</span><span class="p">[</span> <span class="p">:</span> <span class="p">:</span> <span class="mi">3</span><span class="p">]</span>   
+<span class="n">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>    
+<span class="err">结果：</span>    
+    <span class="err">我喜欢你</span>
+</pre></div>
+                <a class="readmore" href="/Python切片.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/Git1.html" rel="bookmark"
                            title="Permalink to 个人搭建博客">个人搭建博客</a></h1>
                 </header>
