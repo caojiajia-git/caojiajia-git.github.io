@@ -2,7 +2,7 @@
 <html lang="chinese (simplified)">
 <head>
         <meta charset="utf-8" />
-        <title>佳哥博客 - Spider</title>
+        <title>Xpath语法</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
 </head>
 
@@ -18,10 +18,15 @@
                     <li class="active"><a href="/category/spider.html">Spider</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/Xpath语法.html" rel="bookmark"
+           title="Permalink to Xpath语法">Xpath语法</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/Xpath语法.html">Xpath语法</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2016-10-04T10:20:00+02:00">
                 Published: 周二 04 十月 2016
@@ -36,7 +41,7 @@
         </address>
 <p>In <a href="/category/spider.html">Spider</a>.</p>
 <p>tags: <a href="/tag/xpathyu-fa.html">Xpath语法</a> </p>
-</footer><!-- /.post-info --><p>1、常用规则</p>
+</footer><!-- /.post-info -->      <p>1、常用规则</p>
 <div class="highlight"><pre><span></span><span class="mi">1</span><span class="err">、</span><span class="n">nodename</span><span class="w">       </span><span class="n">节点名定位</span><span class="w"></span>
 <span class="mi">2</span><span class="err">、</span><span class="o">//</span><span class="w">              </span><span class="n">从当前节点选取子孙节点</span><span class="w"></span>
 <span class="mi">3</span><span class="err">、</span><span class="o">/</span><span class="w">               </span><span class="n">从当前节点选取直接子节点</span><span class="w"></span>
@@ -59,85 +64,11 @@
 <div class="highlight"><pre><span></span><span class="err">索引定位</span>                               <span class="err">从</span><span class="mi">1</span><span class="err">开始</span>   
 <span class="k">last</span><span class="p">()</span><span class="err">函数</span>                               <span class="err">获取最后一个</span>
 <span class="k">position</span><span class="p">()</span><span class="err">函数</span><span class="c1">---&gt;//div[position()&lt;4]      获取前三个</span>
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/Spider理论.html" rel="bookmark"
-                           title="Permalink to Spider理论">Spider理论</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2016-09-06T11:15:00+02:00">
-                Published: 周二 06 九月 2016
-        </abbr>
-		<br />
-        <abbr class="modified" title="2016-09-06T11:15:00+02:00">
-                Updated: 周二 06 九月 2016
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/jia-ge.html">佳哥</a>
-        </address>
-<p>In <a href="/category/spider.html">Spider</a>.</p>
-<p>tags: <a href="/tag/spiderli-lun.html">Spider理论</a> </p>
-</footer><!-- /.post-info -->                <p>1.爬虫获取数据的用途？</p>
-<div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">.</span><span class="err">进行在网页或者是</span><span class="n">app上进行展示</span><span class="err">。</span>
-
-<span class="mi">2</span><span class="p">.</span><span class="err">进行数据分析或者是机器学习相关的项目</span>
 </pre></div>
+    </div><!-- /.entry-content -->
 
-
-<p>2什么是爬虫</p>
-<div class="highlight"><pre><span></span><span class="err">网络爬虫又被称为网页蜘蛛、网络机器人。</span> 
-
-<span class="err">就是模拟客户端（主要是浏览器）发送网络请求，接收请求响应。按照一定的规则自动的抓取互联网信息的程序。</span>
-
-<span class="err">原则上只要客户端（浏览器）能做的事情爬虫都能做。</span>
-</pre></div>
-
-
-<p>爬虫的具体作用？</p>
-<div class="highlight"><pre><span></span><span class="err">一般会用来做数据分析，先通过对数据的清洗，抽取，转换，将数据做成标准化的数据，然后进行数据分析和挖掘，得到数据的商业价值</span><span class="p">.</span>
-</pre></div>
-
-
-<p>3爬虫的用途</p>
-<div class="highlight"><pre><span></span><span class="err">数据采集</span>
-
-<span class="err">软件测试</span>
-
-<span class="err">爬虫之自动化测试</span>
-
-<span class="err">网站上的投票</span>
-
-<span class="err">短信轰炸</span>
-
-<span class="n">web漏洞扫描</span>
-
-<span class="err">注册页面</span><span class="mi">1</span><span class="err">、</span><span class="mi">2</span><span class="err">、</span><span class="mi">3</span>
-</pre></div>
-
-
-<p>4.数据的来源？</p>
-<div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">.</span><span class="err">去第三方的公司购买数据（比如</span> <span class="err">企查查）</span>
-
-<span class="mi">2</span><span class="p">.</span><span class="err">去免费的数据网站下载数据（比如</span> <span class="err">国家统计局）</span>
-
-<span class="mi">3</span><span class="p">.</span><span class="err">通过爬虫爬取数据</span>
-
-<span class="mi">4 …</span></pre></div>
-                <a class="readmore" href="/Spider理论.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>links</h2>
