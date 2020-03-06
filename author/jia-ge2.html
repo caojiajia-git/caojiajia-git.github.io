@@ -23,6 +23,58 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="/Python文件.html" rel="bookmark"
+                           title="Permalink to python的文件">python的文件</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2016-08-15T09:40:00+02:00">
+                Published: 周一 15 八月 2016
+        </abbr>
+		<br />
+        <abbr class="modified" title="2016-08-15T09:40:00+02:00">
+                Updated: 周一 15 八月 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/jia-ge.html">佳哥</a>
+        </address>
+<p>In <a href="/category/python.html">Python</a>.</p>
+<p>tags: <a href="/tag/pythonwen-jian.html">Python文件</a> </p>
+</footer><!-- /.post-info -->                <p>&lt;1&gt;文件重命名     </p>
+<p>os模块中的rename()可以完成对文件的重命名操作    </p>
+<p>格式：  rename ("老文件名","新文件名")       </p>
+<p>例如：    </p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>    
+<span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;xxx.txt&quot;</span><span class="p">,</span><span class="s2">&quot;新文件名&quot;</span><span class="p">)</span>      
+</pre></div>
+
+
+<p>&lt;2&gt;删除文件       </p>
+<p><code>os.remove("1.txt")</code>      </p>
+<p>&lt;3&gt;创建文件夹    </p>
+<p><code>os.mkdir("baobao")</code>        </p>
+<p>&lt;4&gt;获取当前目录     </p>
+<p><code>print(os.getcwd())</code>        </p>
+<p>&lt;5&gt;改变默认目录        </p>
+<div class="highlight"><pre><span></span><span class="cp">../   是父级</span>
+./    是同级   
+os.chdir(&quot;../&quot;)
+print(os.getcwd())
+</pre></div>
+
+
+<p>&lt;6&gt;获取目录列表     </p>
+<p><code>print(os.listdir("./"))</code>     </p>
+<p>&lt;7&gt;删除文件夹    </p>
+<p><code>os.rmdir …</code></p>
+                <a class="readmore" href="/Python文件.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="/Python列表.html" rel="bookmark"
                            title="Permalink to python的列表">python的列表</a></h1>
                 </header>
